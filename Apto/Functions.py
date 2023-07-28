@@ -3,10 +3,12 @@ import requests
 import openai
 from bardapi import Bard
 import os
+from django.conf import settings
+from decouple import config
 
-os.environ['_BARD_API_KEY']="ZAg7RrKFc0wJsb_x6oyIqJLL--PDSWnnlzKklbeb9hpIToVDN0cKmxxpPliSvLzYxsAFEA."
-api_key = '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'
-openai.api_key = api_key
+os.environ['_BARD_API_KEY']='BARD_API_KEY'
+Api_key=config('api_key')
+openai.api_key =Api_key
 
 def sendWhatsappmessage(phonenumber, message):
     headers = {"Authorization": settings.WHATSAPP_TOKEN}

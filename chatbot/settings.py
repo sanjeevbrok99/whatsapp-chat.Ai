@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g)r^%+bx+ir7dhybor(x@+9ahsftum@qwzf8ia^#r)ykk-j(@+'
+SECRET_KEY =config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['15ac-2405-201-5019-c88b-854b-e806-46c4-8fbc.ngrok-free.app','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['1957-2405-201-5019-c88b-854b-e806-46c4-8fbc.ngrok-free.app','localhost','127.0.0.1']
 
 
 # Application definition
@@ -136,5 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #my settings
 WHATSAPP_URL='https://graph.facebook.com/v17.0/115701801584874/messages'
-WHATSAPP_TOKEN='Bearer EAANqcotxjXQBO9ZBEBoUoWZANXcmZBzmPU2DUKPl4YPcVPJtqpCXWaDz8RZCOuKUQv51HpJEDbjbZBg1kzNtXSepxtpz2ZCZCZASZACKUVS1wVtDgE84EZBVZC4L9jJHivQddUOMsReim9K7h6LV0hmmmp3uZA5dV3vTUFYaEB1nQwbaZBkicQ56mZCjLaHvJVL081ZBZAbFZAPziV8cwrHQPDooRZA34ZD'
-
+WHATSAPP_TOKEN=config('WHATSAPP_TOKEN')
+verification_token=config('verification_key')
+Api_key=config('api_key')
