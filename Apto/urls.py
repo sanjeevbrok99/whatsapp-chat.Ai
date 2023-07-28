@@ -1,22 +1,14 @@
-"""
-URL configuration for Apto project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path
+
+from django.urls import path,include
+from apto import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("",views.homepage,name='route'),
+    path("webhook",views.whatsapp_webhook,name='Whatsapp-webhook'),
+    
+    
 ]
+#webhookURL-"beb061bd-ba78-4928-919e-5fc8a7f76983"
+#Token-"24f8f399-97d0-4d1d-b7c1-2a5767d3ac64"

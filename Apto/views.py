@@ -10,7 +10,7 @@ from bardapi import Bard
 import os
 os.environ['_BARD_API_KEY']="ZAg7RrKFc0wJsb_x6oyIqJLL--PDSWnnlzKklbeb9hpIToVDN0cKmxxpPliSvLzYxsAFEA."
 # from .Functions import generate_response
-api_key = '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'
+api_key = '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'
 openai.api_key = api_key
 
 from .Functions import*
@@ -131,9 +131,12 @@ def whatsapp_webhook(request):
                             messageId = entry['changes'][0]['value']['messages'][0]['id']
                             timestamp = entry['changes'][0]['value']['messages'][0]['timestamp']
                             text = entry['changes'][0]['value']['messages'][0]['text']['body']
-
-                            message = generate_response(text)
-                            print( message)
+                            if "image " in text or "photo"in text or "pic" in text:
+                                message = generate_image(text)
+                                print( message)
+                            else:
+                                message = generate_response(text)
+                                print( message)
 
                         # Send the response back using WhatsApp API or any other appropriate method
                             phonenumber = "918968258994"  # Replace with the recipient's phone number
@@ -142,9 +145,9 @@ def whatsapp_webhook(request):
                     except:
                         pass
     return HttpResponse('success', status=200)
-input_text = "what is google bard?"
+# input_text = "what is google bard?"
 
-print(Bard().get_answer(input_text)['content'])
+# print(Bard().get_answer(input_text)['content'])
     # if request.method == 'POST':
     #     data = json.loads(request.body)
     #     if 'object' in data and 'entry' in data:
